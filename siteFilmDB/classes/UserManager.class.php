@@ -15,6 +15,8 @@ class UserManager {
         $password = password_hash($user->getPassword(), PASSWORD_DEFAULT, ['cost'=>12]);
         $stmt->bindValue (":password", $password); 
         $stmt->execute();
+        $id = $this->cnx->lastInsertId();
+        $user->setId($id);
     }
 
     public function findBy(string $login){

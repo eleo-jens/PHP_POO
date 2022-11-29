@@ -239,7 +239,7 @@ class Film {
 
     public function addNote(Note $newNote):self {
         $this->notes[] = $newNote;
-        $newNote->getFilm($this);
+        $newNote->setFilm($this);
         return $this;
     }
 

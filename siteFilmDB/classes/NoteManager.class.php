@@ -14,7 +14,7 @@ class NoteManager {
 
         $stmt->bindValue(":cotation", $note->getCotation());
         $stmt->bindValue(":idUser", $note->getUser()->getId());
-        $stmt->bindValue(":idUser", $note->getFilm()->getId());
+        $stmt->bindValue(":idFilm", $note->getFilm()->getId());
 
         $stmt->execute();
     }

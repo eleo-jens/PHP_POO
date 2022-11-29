@@ -26,10 +26,15 @@ class FilmManager
         $stmt->bindValue(":description", $film->getDescription());
         $stmt->bindValue(":dateSortie", $film->getDateSortie()->format("y-m-d"));
         //obtenir un nom pour l'image
-        $nomFichier = $this->uploadImage();
-        $stmt->bindValue(":image", $nomFichier);
+        // $nomFichier = $this->uploadImage();
+        // $stmt->bindValue(":image", $nomFichier);
+        $stmt->bindValue(":image", "");
+        
 
         $stmt->execute();
+
+        $id = $this->cnx->lastInsertId();
+        $film->setId($id);
 
         // pour débug
         // var_dump($stmt->errorInfo());
